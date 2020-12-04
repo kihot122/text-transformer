@@ -1,5 +1,5 @@
 https://docs.google.com/spreadsheets/d/1UbAZ_7wadQsjxXhGCNmTrLzh1Ok_BDeaGEHjsqzNZ1U/edit?usp=sharing
-
+https://docs.google.com/spreadsheets/d/e/2PACX-1vQndYCJCWd-LgB0E3TjUa2sMFUaV2M-3plaVgLB61xtYDLnorXlL9trQWuSvEYVByVTUqGMZVzwPiEJ/pubhtml
 Michał Kowalewski 141253
 Wojciech Lewandowski 141265
 Pavlo Ravliv 135412
