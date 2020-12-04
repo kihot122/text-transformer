@@ -15,4 +15,9 @@ public class TextTransformer {
         // of course, normally it would do something based on the transforms
         return text.toUpperCase();
     }
+    public String reverse(String text){
+        StringBuffer sbr = new StringBuffer(text);
+        sbr.reverse();
+        return  sbr.toString();
+    }
 }
