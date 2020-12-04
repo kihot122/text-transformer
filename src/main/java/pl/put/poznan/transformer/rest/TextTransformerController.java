@@ -26,16 +26,16 @@ public class TextTransformerController {
 
         TextTransformer transformer = new TextTransformer(transforms);
         if(params.contains("capitalize"))
-            text = transformer.Capitalize(text);
+            text = transformer.capitalize(text);
 
         if(params.contains("upper"))
-            text = transformer.Upper(text);
+            text = transformer.upper(text);
 
         if(params.contains("lower"))
-            text = transformer.Lower(text);
+            text = transformer.lower(text);
 
         if(params.contains("reverse"))
-            text = transformer.Reverse(text);
+            text = transformer.reverse(text);
 
         return text;
     }
