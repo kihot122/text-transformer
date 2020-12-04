@@ -1,13 +1,6 @@
 package pl.put.poznan.transformer.logic;
 import java.util.*;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-
 /**
  * This is just an example to show that the logic should be outside the REST service.
  */
@@ -58,7 +51,6 @@ public class TextTransformer {
 
         return String.join(" ", list);
     }
-
     public String expandAbbreviation(String text) {
         String[] words = text.split(" ");
         for (int i = 0; i < words.length; i++) {
