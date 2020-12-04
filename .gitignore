@@ -1,0 +1,9 @@
+*
+!/src**
+
+!.gitignore
+!CMakeLists.txt
+!README.md
+!LICENSE
+!pom.xml
+!ioprojectarchitecture.iml
