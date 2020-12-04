@@ -5,42 +5,40 @@ import org.springframework.web.bind.annotation.*;
 import pl.put.poznan.transformer.logic.TextTransformer;
 
 import java.util.Arrays;
+import java.util.List;
 
 
 @RestController
-@RequestMapping("/{text}")
+@RequestMapping("/")
 public class TextTransformerController {
 
     private static final Logger logger = LoggerFactory.getLogger(TextTransformerController.class);
 
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
-    public String get(@PathVariable String text,
-                              @RequestParam(value="transforms", defaultValue="upper,escape") String[] transforms) {
+    public String get(@RequestParam(value="text", defaultValue="test") String text,
+                      @RequestParam(value="transforms", defaultValue="upper,escape") String[] transforms) {
 
         // log the parameters
         logger.debug(text);
         logger.debug(Arrays.toString(transforms));
 
-        // perform the transformation, you should run your logic here, below is just a silly example
+        List<String> params = Arrays.asList(transforms);
+
         TextTransformer transformer = new TextTransformer(transforms);
-        return transformer.transform(text);
+        if(params.contains("capitalize"))
+            text = transformer.capitalize(text);
+
+        if(params.contains("upper"))
+            text = transformer.upper(text);
+
+        if(params.contains("lower"))
+            text = transformer.lower(text);
+
+        if(params.contains("reverse"))
+            text = transformer.reverse(text);
+
+        return text;
     }
-
-    @RequestMapping(method = RequestMethod.POST, produces = "application/json")
-    public String post(@PathVariable String text,
-                      @RequestBody String[] transforms) {
-
-        // log the parameters
-        logger.debug(text);
-        logger.debug(Arrays.toString(transforms));
-
-        // perform the transformation, you should run your logic here, below is just a silly example
-        TextTransformer transformer = new TextTransformer(transforms);
-        return transformer.transform(text);
-    }
-
-
-
 }
 
 

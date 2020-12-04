@@ -1,4 +1,5 @@
 package pl.put.poznan.transformer.logic;
+import java.util.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,13 +27,17 @@ public class TextTransformer {
         this.transforms = transforms;
     }
 
-    public String transform(String text) {
-        // of course, normally it would do something based on the transforms
+    public String upper(String text){
         return text.toUpperCase();
     }
-
-    public String reverse(String text) {
-        StringBuffer sbr = new StringBuffer(text);
+    public String lower(String text){
+        return text.toLowerCase();
+    }
+    public String capitalize(String text){
+        return text.substring(0, 1).toUpperCase() + text.substring(1);
+    }
+    public String reverse(String text){
+        StringBuilder sbr = new StringBuilder(text);
         sbr.reverse();
         return sbr.toString();
     }
