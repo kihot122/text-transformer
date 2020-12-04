@@ -18,11 +18,9 @@ public class TextTransformer {
         return text.toLowerCase();
     }
     public String Capitalize(String text){
-        String output = text.substring(0, 1).toUpperCase() + text.substring(1);
-        return output;
+        return text.substring(0, 1).toUpperCase() + text.substring(1);
     }
-
-    public String reverse(String text){
+    public String Reverse(String text){
         StringBuffer sbr = new StringBuffer(text);
         sbr.reverse();
         return  sbr.toString();
