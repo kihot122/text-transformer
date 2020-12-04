@@ -46,6 +46,9 @@ public class TextTransformerController {
         if(params.contains("shrink"))
             text = transformer.shrinkToAbbreviation(text);
 
+        if(params.contains("read_int"))
+            text = transformer.readInt(text);
+
         return text;
     }
 }
