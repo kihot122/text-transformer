@@ -37,6 +37,9 @@ public class TextTransformerController {
         if(params.contains("reverse"))
             text = transformer.Reverse(text);
 
+        if(params.contains("remove_dup"))
+            text = transformer.remove_dup(text);
+
         return text;
     }
 }
