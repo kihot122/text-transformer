@@ -27,6 +27,4 @@ public class TextTransformer {
         sbr.reverse();
         return  sbr.toString();
     }
-
-    //public String
 }
