@@ -40,6 +40,12 @@ public class TextTransformerController {
         if(params.contains("remove_dup"))
             text = transformer.remove_dup(text);
 
+        if(params.contains("expand"))
+            text = transformer.expandAbbreviation(text);
+
+        if(params.contains("shrink"))
+            text = transformer.shrinkToAbbreviation(text);
+
         return text;
     }
 }

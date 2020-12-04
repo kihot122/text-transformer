@@ -12,14 +12,23 @@ public class TextTransformer {
     public TextTransformer(String[] transforms) {
         abbriviations = new HashMap<>();
 
-        abbriviations.put("mgr.", "magister");
-        abbriviations.put("Mgr.", "Magister");
+        abbriviations.put("mgr", "magister");
+        abbriviations.put("Mgr", "Magister");
 
         abbriviations.put("dr", "doktor");
         abbriviations.put("Dr", "Doktor");
 
         abbriviations.put("np", "na przykład");
         abbriviations.put("Np", "Na przykład");
+
+        abbriviations.put("prof.", "profesor");
+        abbriviations.put("Prof.", "Profesor");
+
+        abbriviations.put("inż", "inżynier");
+        abbriviations.put("Inż", "Inżynier");
+
+        abbriviations.put("hab.", "habilitowany");
+        abbriviations.put("Hab.", "Habilitowany");
 
         this.transforms = transforms;
     }
