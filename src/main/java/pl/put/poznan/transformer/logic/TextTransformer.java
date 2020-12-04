@@ -18,11 +18,11 @@ public class TextTransformer {
         abbriviations.put("mgr.", "magister");
         abbriviations.put("Mgr.", "Magister");
 
-        abbriviations.put("dr.", "doktor");
-        abbriviations.put("Dr.", "Doktor");
+        abbriviations.put("dr", "doktor");
+        abbriviations.put("Dr", "Doktor");
 
-        abbriviations.put("np.", "na przykład");
-        abbriviations.put("Np.", "Na przykład");
+        abbriviations.put("np", "na przykład");
+        abbriviations.put("Np", "Na przykład");
 
         this.transforms = transforms;
     }
@@ -42,12 +42,23 @@ public class TextTransformer {
         return sbr.toString();
     }
 
-    public String expandAbbriviation(String text) {
+    public String expandAbbreviation(String text) {
         String[] words = text.split(" ");
         for (int i = 0; i < words.length; i++) {
             for (Map.Entry<String, String> me : abbriviations.entrySet()) {
                 if (words[i].equals(me.getKey())) {
                     words[i] = me.getValue();
+                }
+            }
+        }
+        return String.join(" ", words);
+    }
+    public String shrinkToAbbreviation(String text){
+        String[] words = text.split(" ");
+        for (int i = 0; i < words.length; i++) {
+            for (Map.Entry<String, String> me : abbriviations.entrySet()) {
+                if (words[i].equals(me.getValue())) {
+                    words[i] = me.getKey();
                 }
             }
         }
