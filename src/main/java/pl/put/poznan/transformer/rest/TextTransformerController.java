@@ -2,7 +2,7 @@ package pl.put.poznan.transformer.rest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
-import pl.put.poznan.transformer.logic.TextTransformer;
+import pl.put.poznan.transformer.logic.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -17,40 +17,53 @@ public class TextTransformerController {
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
     public String get(@RequestParam(value="text", defaultValue="test") String text,
                       @RequestParam(value="transforms", defaultValue="upper,escape") String[] transforms) {
+        Abbriviations abbriviations = new Abbriviations();
+        InputString inputString = new InputString(text);
+        TextDecorator textDecorator = new TextDecorator(inputString);
 
         // log the parameters
-        logger.debug(text);
-        logger.debug(Arrays.toString(transforms));
+        logger.info(text);
+        logger.info(Arrays.toString(transforms));
 
         List<String> params = Arrays.asList(transforms);
 
         TextTransformer transformer = new TextTransformer(transforms);
         if(params.contains("capitalize"))
-            text = transformer.capitalize(text);
+            textDecorator = new Capitalize(textDecorator);
+//            text = transformer.capitalize(text);
 
-        if(params.contains("upper"))
-            text = transformer.upper(text);
+        if(params.contains("upper")){
+            textDecorator = new ToCapital(textDecorator);
+//            text = transformer.upper(text);
+
+        }
 
         if(params.contains("lower"))
-            text = transformer.lower(text);
+            textDecorator = new ToLower(textDecorator);
+//            text = transformer.lower(text);
 
         if(params.contains("reverse"))
+            textDecorator = new Reverse(textDecorator);
             text = transformer.reverse(text);
 
         if(params.contains("remove_dup"))
-            text = transformer.remove_dup(text);
+            textDecorator = new RemoveDuplicates(textDecorator);
+//            text = transformer.remove_dup(text);
 
         if(params.contains("expand"))
-            text = transformer.expandAbbreviation(text);
+            textDecorator  = new ExpandAbbriviation(textDecorator,abbriviations);
+//            text = transformer.expandAbbreviation(text);
 
         if(params.contains("shrink"))
+            textDecorator = new ShrinkAbbriviation(textDecorator,abbriviations);
             text = transformer.shrinkToAbbreviation(text);
 
         if(params.contains("read_int"))
+            textDecorator = new ReadInt(textDecorator);
             text = transformer.readInt(text);
 
-        return text;
+
+        inputString = new InputString(textDecorator.transform());
+        return inputString.getText();
     }
 }
-
-
