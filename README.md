@@ -6,3 +6,5 @@ Pavlo Ravliv 135412
 Mateusz Kluba 141246
 
 [![Build Status](https://travis-ci.org/kihot122/text-transformer.svg?branch=master)](https://travis-ci.org/kihot122/text-transformer)
+
+Version 1
