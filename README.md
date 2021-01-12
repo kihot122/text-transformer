@@ -5,6 +5,12 @@ Wojciech Lewandowski 141265
 Pavlo Ravliv 135412
 Mateusz Kluba 141246
 
+## Uruchomienie front_endu
+- cd ./front-end
+- npm install 
+- npm run start 
+
+
 [![Build Status](https://travis-ci.org/kihot122/text-transformer.svg?branch=master)](https://travis-ci.org/kihot122/text-transformer)
 
 Version 1

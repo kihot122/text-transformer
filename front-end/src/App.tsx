@@ -5,7 +5,8 @@ import MyForm from './components/form/my-form';
 function App() {
   return (
     <div className="App">
-      <MyForm />
+       <MyForm />
+      {/*<WebAssm/>*/}
     </div>
   );
 }
