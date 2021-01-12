@@ -30,32 +30,32 @@ public class TextTransformerController {
         List<String> params = Arrays.asList(transforms);
 
         TextTransformer transformer = new TextTransformer(transforms);
-        if (params.contains("capitalize"))
-            textDecorator = new Capitalize(textDecorator);
 
-        if (params.contains("upper")) {
-            textDecorator = new ToCapital(textDecorator);
+        for(var transform : params) {
+            if (transform.equals("capitalize"))
+                textDecorator = new Capitalize(textDecorator);
 
+            if (transform.equals("upper"))
+                textDecorator = new ToCapital(textDecorator);
+
+            if (transform.equals("lower"))
+                textDecorator = new ToLower(textDecorator);
+
+            if (transform.equals("reverse"))
+                textDecorator = new Reverse(textDecorator);
+
+            if (transform.equals("remove_dup"))
+                textDecorator = new RemoveDuplicates(textDecorator);
+
+            if (transform.equals("expand"))
+                textDecorator = new ExpandAbbriviation(textDecorator, abbriviations);
+
+            if (transform.equals("shrink"))
+                textDecorator = new ShrinkAbbriviation(textDecorator, abbriviations);
+
+            if (transform.equals("read_int"))
+                textDecorator = new ReadInt(textDecorator);
         }
-        if (params.contains("lower"))
-            textDecorator = new ToLower(textDecorator);
-
-        if (params.contains("reverse"))
-            textDecorator = new Reverse(textDecorator);
-
-        if (params.contains("remove_dup"))
-            textDecorator = new RemoveDuplicates(textDecorator);
-
-        if (params.contains("expand"))
-            textDecorator = new ExpandAbbriviation(textDecorator, abbriviations);
-
-        if (params.contains("shrink"))
-            textDecorator = new ShrinkAbbriviation(textDecorator, abbriviations);
-
-        if (params.contains("read_int"))
-            textDecorator = new ReadInt(textDecorator);
-
-
         inputString = new InputString(textDecorator.transform());
         return inputString.getText();
     }
