@@ -1,18 +1,18 @@
 package pl.put.poznan.transformer.test;
 import org.junit.jupiter.api.Test;
+import pl.put.poznan.transformer.logic.Capitalize;
+import pl.put.poznan.transformer.logic.InputString;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CapitalizeTest {
 
     @Test
-    public String transform() {
+    public void transform() {
         String s = "abc";
+        InputString inputString = new InputString(s);
+        Capitalize c = new Capitalize(inputString);
 
-        CapitalizeTest tester = new CapitalizeTest();
-
-        assertEquals("Abc", tester.transform(), "Capitalize");
-
-        return "";
+        assertEquals("Abc", c.transform(), "Capitalize");
     }
 }
