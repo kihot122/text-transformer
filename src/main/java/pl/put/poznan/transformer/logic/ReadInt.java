@@ -36,7 +36,10 @@ public class ReadInt extends TextDecorator {
                         }
                     }
                     else if(tmp.length() == 3){
-                        if(tmp.charAt(0) == '1'){
+                        if(tmp.charAt(0) == '0'){
+                            tmp = tmp.substring(1);
+                        }
+                        else if(tmp.charAt(0) == '1'){
                             IntToWords += "sto ";
                             number -= 100;
                             tmp = tmp.substring(1);
@@ -96,12 +99,12 @@ public class ReadInt extends TextDecorator {
                             }
                         }
                         else if(tmp.charAt(0) == '3'|| tmp.charAt(0) == '4'){
-                            if(tmp.charAt(0) == '3' || tmp.charAt(1) == '0'){
+                            if(tmp.charAt(0) == '3'){
                                 IntToWords += "trzydzieści ";
                                 number -= 30;
                                 tmp = tmp.substring(1);
                             }
-                            else if (tmp.charAt(0) == '4' || tmp.charAt(1) == '0'){
+                            else if (tmp.charAt(0) == '4'){
                                 IntToWords += "czterdzieści ";
                                 number -= 40;
                                 tmp = tmp.substring(1);
@@ -118,6 +121,7 @@ public class ReadInt extends TextDecorator {
                         number -= Integer.parseInt(String.valueOf(tmp.charAt(0)));
                     }
                 }
+                //IntToWords = IntToWords.substring(0, IntToWords.length());
                 array[i] = IntToWords;
             }
         }
